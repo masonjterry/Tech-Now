@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+
+}
+
+.jumbotron {
+  background-image: url("../images/laptop.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 240px;
+  color: white;
+  text-shadow: 1px 1px #000;
+}
