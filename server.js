@@ -11,7 +11,7 @@ const app = express();
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.statis("public"));
+app.use(express.static("public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -20,22 +20,22 @@ require("./controllers/techNowController")(app);
 
 mongoose.Promise = Promise;
 
-const database = "mongodb://localhost/techNow";
+let database = "mongodb://localhost/techNow";
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI);
 } else {
   mongoose.connect(database);
 }
 
-const db = mongoose.connection;
+database = mongoose.connection;
 
-db.on("error", function(err) {
-  console.log(`Mongoose Error: ${err}`);
-});
-
-db.once("open", function() {
-  console.log("connection was successful");
-});
+// db.on("error", function(err) {
+//   console.log(`Mongoose Error: ${err}`);
+// });
+//
+// db.once("open", function() {
+//   console.log("connection was successful");
+// });
 
 app.listen(PORT, function() {
   console.log(`Port: ${PORT} is running`)
