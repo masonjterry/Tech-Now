@@ -5,7 +5,6 @@ const cheerio = require("cheerio");
 module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Article.find({}).then(function(data) {
-      console.log(data);
       let articles = {};
       res.render("index", { articles: data });
     });
@@ -16,12 +15,9 @@ module.exports = function(app) {
 
       let $ = cheerio.load(response.data);
 
-      // Now, we grab every h2 within an article tag, and do the following:
       $("h2.post-title").each(function(i, element) {
-        // Save an empty result object
         let result = {};
 
-        // Add the text and href of every link, and save them as properties of the result object
         result.title = $(this)
           .children("a")
           .text();
@@ -30,18 +26,28 @@ module.exports = function(app) {
           .attr("href");
         result.summary = $("p.excerpt").text();
         result.saved = "false";
-        // Create a new Article using the `result` object built from scraping
         db.Article
           .create(result)
           .then(function(dbArticle) {
-            // If we were able to successfully scrape and save an Article, send a message to the client
             res.send("scraped");
           })
           .catch(function(err) {
-            // If an error occurred, send it to the client
             res.json(err);
           });
       });
+    });
+  });
+
+  app.get("/saved", function(req, res) {
+    db.Article.find({ saved: true }).then(function(data) {
+      let saved = {};
+      res.render("saved", { saved: data });
+    });
+  });
+
+  app.post("/api/saved/:id", function(req, res) {
+    db.Article.findOneAndUpdate({ _id: req.params.id }, {$set: {saved: true}}).then(function(data) {
+
     });
   });
 
