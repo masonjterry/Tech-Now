@@ -53,4 +53,10 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/note/:id", function(req, res) {
+    db.Note.create({}).then(function(data) {
+      
+    });
+  });
+
 }

@@ -29,14 +29,6 @@ if (process.env.MONGODB_URI) {
 
 db = mongoose.connection;
 
-// database.on("error", function(err) {
-//   console.log(`Mongoose Error: ${err}`);
-// });
-//
-// database.once("open", function() {
-//   console.log("connection was successful");
-// });
-
 app.listen(PORT, function() {
   console.log(`Port: ${PORT} is running`)
 });

@@ -30,4 +30,18 @@ $(document).ready(function() {
     });
     location.reload();
   });
+
+  $(".note-btn").on("click", function(e) {
+    e.preventDefault();
+    let click = e.target.id;
+    let note = {
+      title: $("#title").val().trim(),
+      body: $("#body").val().trim()
+    }
+    $.post(`/api/note/${click}`, note, function(dat) {
+
+    }).then(function(result) {
+
+    });
+  });
 });
