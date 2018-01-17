@@ -4,6 +4,7 @@ const cheerio = require("cheerio");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
+
     db.Article.find({}).then(function(data) {
       let articles = {};
       res.render("index", { articles: data });
@@ -18,20 +19,15 @@ module.exports = function(app) {
       $("h2.post-title").each(function(i, element) {
         let result = {};
 
-        result.title = $(this)
-          .children("a")
-          .text();
-        result.link = $(this)
-          .children("a")
-          .attr("href");
+        result.title = $(this).children("a").text();
+        result.link = $(this).children("a").attr("href");
         result.summary = $("p.excerpt").text();
         result.saved = "false";
-        db.Article
-          .create(result)
-          .then(function(dbArticle) {
-            res.send("scraped");
-          })
-          .catch(function(err) {
+
+        db.Article.create(result).then(function(dbArticle) {
+          let articles = {};
+            res.send(dbArticle);
+          }).catch(function(err) {
             res.json(err);
           });
       });
