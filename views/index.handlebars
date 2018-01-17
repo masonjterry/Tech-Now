@@ -3,10 +3,10 @@
     <main>
       <div class="articles">
         {{#each articles}}
-          <h3><strong>{{this.title}}</strong></h3>
-          <!-- <p>{{this.summary}}</p> -->
-          <p>{{this.link}}</p>
-          <button class="btn btn-primary save-btn">Save Article</button>
+            <a href="{{this.link}}" target="_blank"><h3><strong>{{this.title}}</strong></h3></a>
+            <!-- <p>{{this.summary}}</p> -->
+            <a href="{{this.link}}" target="_blank"><p>{{this.link}}</p></a>
+            <button class="btn btn-primary save-btn">Save Article</button>
         {{/each}}
       </div>
     </main>

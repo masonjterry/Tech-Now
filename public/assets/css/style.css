@@ -6,6 +6,21 @@ body {
 
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.art-border {
+  background-color: red;
+  border: blue;
+  box-shadow: 2px 2px #000;
+}
+
 #jumbotron-header {
   font-size: 4rem;
   text-align: center;
