@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 module.exports = function(app) {
   app.get("/", function(req, res) {
 
-    db.Article.find({}).then(function(data) {
+    db.Article.find({}).sort({_id: -1}).then(function(data) {
       let articles = {};
       res.render("index", { articles: data });
     });
