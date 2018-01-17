@@ -51,4 +51,10 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/unsaved/:id", function(req, res) {
+    db.Article.findOneAndUpdate({ _id: req.params.id }, {$set: {saved: false}}).then(function(data) {
+
+    });
+  });
+
 }
