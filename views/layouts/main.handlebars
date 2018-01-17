@@ -10,6 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -28,11 +30,21 @@
         </div>
       </nav>
       <!-- jumbotron -->
-      <div class ="jumbotron">
-        <h1>Tech Now!</h1>
-        <p>Get The Latest Articles Tech News</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class ="jumbotron">
+            <h1 id="jumbotron-header">Tech Now!</h1>
+            <h3 id="jumbotron-par">Get The Latest Articles Tech News</h3>
+          </div>
+        </div>
       </div>
-      {{{ body }}}
+      <div class="row">
+        <div class="col-md-12">
+          {{{ body }}}
+        </div>
+      </div>
     </div>
+    <!-- javascript -->
+    <script type="text/javascript" src="assets/js/main.js"></script>
   </body>
 </html>

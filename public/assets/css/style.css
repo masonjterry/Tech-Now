@@ -6,11 +6,21 @@ body {
 
 }
 
+#jumbotron-header {
+  font-size: 4rem;
+  text-align: center;
+}
+
+#jumbotron-par {
+  text-align: center;
+}
+
 .jumbotron {
   background-image: url("../images/laptop.jpeg");
+  opacity: .7;
   background-size: cover;
   background-repeat: no-repeat;
   height: 240px;
-  color: white;
-  text-shadow: 1px 1px #000;
+  color: #ccc;
+  text-shadow: 2px 0px #000;
 }

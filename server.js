@@ -5,7 +5,7 @@ const logger = require("morgan");
 const exphbs = require("express-handlebars");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const db = require("./models");
+let db = require("./models");
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -27,13 +27,13 @@ if (process.env.MONGODB_URI) {
   mongoose.connect(database);
 }
 
-database = mongoose.connection;
+db = mongoose.connection;
 
-// db.on("error", function(err) {
+// database.on("error", function(err) {
 //   console.log(`Mongoose Error: ${err}`);
 // });
 //
-// db.once("open", function() {
+// database.once("open", function() {
 //   console.log("connection was successful");
 // });
 
